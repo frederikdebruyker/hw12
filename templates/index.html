@@ -13,55 +13,57 @@
 
 <body>
     <div class="container-fluid">
-        <div class="container-fluid">
-            <div class="jumbotron text-center col-sm-12 col-md-12 col-lg-12">
-                <h1>Mission to Mars</h1>
-                <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        <div class="jumbotron text-center col-sm-12 col-md-12">
+            <h1>Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+
+        <div class="col-sm-12 col-md-12 m-0 p-0">
+            <h3>Latest Mars News</h3>
+            <h5>{{ m2m_data.LatestMarsNews.0.news_title }}</h5>
+            <p>{{ m2m_data.LatestMarsNews.0.news_p }}</p>
+        </div>
+        <div class="row col-sm-12 col-md-12 m-0 p-0">
+            <div class="col-sm-8 col-md-8 m-0 p-0">
+                <h3>Featured Mars Image</h3>
+                <p><img class="img-fluid max-width: 100% height: auto ol-sm-12 col-md-12 col-lg-12 m-0 p-0 pr-4"
+                        src="{{ m2m_data.FeaturedMarsImage }}" alt="Featured Mars Image"></p>
             </div>
-    
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <h3>Latest Mars News</h3>
-                <h5>{{ m2m_data.LatestMarsNews.0.news_title }}</h5>
-                <p>{{ m2m_data.LatestMarsNews.0.news_p }}</p>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 ml-0">
-                <div class="col-sm-12 col-md-8 col-lg-8 ml-0">
-                    <h3>Featured Mars Image</h3>
-                    <p><img class="ol-sm-12 col-md-12 col-lg-12 ml-0" src="{{ m2m_data.FeaturedMarsImage }}"
-                            alt="Featured Mars Image" width="20%" height="20%"></p>
+            <div class="col-sm-12 col-md-4 m-0 p-0">
+                <div class="col-sm-12 col-md-12 border border-light m-0 p-3">
+                    <h4>Current Weather on Mars</h4>
+                    <p>{{ m2m_data.CurrentWeatheronMars }}</p>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
-                    <div class="border border-light">
-                        <h4>Current Weather on Mars</h4>
-                        <p>{{ m2m_data.CurrentWeatheronMars }}</p>
-                    </div>
-                    <div>
-                        <h4>Mars Facts</h4>
-                        <table>
-                            <tr>
-                                <th>Description</th>
-                                <th>Facts</th>
-                            </tr>
-                            {% for MarsFact in m2m_data.MarsFacts %}
-                            <tr>
-                                <td>{{ MarsFact.Description }}</td>
-                                <td>{{ MarsFact.Facts}}</td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
+                <div class="col-sm-12 col-md-12">
+                    <h4>Mars Facts</h4>
+                    <table class="border border-dark">
+                        <tr>
+                            <th class="border border-dark">Description</th>
+                            <th class="border border-dark">Value</th>
+                        </tr>
+                        {% for MarsFact in m2m_data.MarsFacts %}
+                        <tr>
+                            <th class="border border-dark">{{ MarsFact.Description }}</th>
+                            <td class="border border-dark">{{ MarsFact.Facts}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <h3 class="text-center">Mars Hemispheres</h3>
+        </div>
+        <div class="col-sm-12 col-md-12 m-0 p-0">
+            <h3 class="text-center m-0 p-0">Mars Hemispheres</h3>
+            <div class="row p-2  m-4">
                 {% for MarsHemisphere in m2m_data.MarsHemispheres %}
-                <div class="col-sm-12 col-md-6 col-lg-6 border border-light">
-                    <p><img src="{{ MarsHemisphere.img_url }}" alt="Mars Hemisphere image"></p>
+                <div class="col-sm-12 col-md-6 border border-light p-2">
+                    <p><img class="img-fluid max-width: 100% height: auto m-0 p-0" src="{{ MarsHemisphere.img_url }}"
+                            alt="Mars Hemisphere image"></p>
                     <h4>{{ MarsHemisphere.title }}</h4>
                 </div>
                 {% endfor %}
             </div>
         </div>
-    </body>
+    </div>
+</body>
 
 </html>
