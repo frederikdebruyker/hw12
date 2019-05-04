@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="jumbotron text-center col-sm-12 col-md-12 col-lg-12">
+                <h1>Mission to Mars</h1>
+                <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+            </div>
+    
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <h3>Latest Mars News</h3>
+                <h5>{{ m2m_data.LatestMarsNews.0.news_title }}</h5>
+                <p>{{ m2m_data.LatestMarsNews.0.news_p }}</p>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 ml-0">
+                <div class="col-sm-12 col-md-8 col-lg-8 ml-0">
+                    <h3>Featured Mars Image</h3>
+                    <p><img class="ol-sm-12 col-md-12 col-lg-12 ml-0" src="{{ m2m_data.FeaturedMarsImage }}"
+                            alt="Featured Mars Image" width="20%" height="20%"></p>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    <div class="border border-light">
+                        <h4>Current Weather on Mars</h4>
+                        <p>{{ m2m_data.CurrentWeatheronMars }}</p>
+                    </div>
+                    <div>
+                        <h4>Mars Facts</h4>
+                        <table>
+                            <tr>
+                                <th>Description</th>
+                                <th>Facts</th>
+                            </tr>
+                            {% for MarsFact in m2m_data.MarsFacts %}
+                            <tr>
+                                <td>{{ MarsFact.Description }}</td>
+                                <td>{{ MarsFact.Facts}}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <h3 class="text-center">Mars Hemispheres</h3>
+                {% for MarsHemisphere in m2m_data.MarsHemispheres %}
+                <div class="col-sm-12 col-md-6 col-lg-6 border border-light">
+                    <p><img src="{{ MarsHemisphere.img_url }}" alt="Mars Hemisphere image"></p>
+                    <h4>{{ MarsHemisphere.title }}</h4>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+
+</html>
